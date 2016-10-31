@@ -1,1 +1,4 @@
 /django_app/settings.py
+bin/*
+include/*
+lib/*
