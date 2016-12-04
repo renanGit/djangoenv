@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {# Load custom tag/filter #}
+    {% load alpha_extras %}
+    {# Load the tag library #}
+    {% load bootstrap3 %}
+    {% load static %}
+
+    {# Load Alpha CSS #}
+    <link rel="stylesheet" type="text/css" href="{% static 'alpha/home.css' %}" />
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body class="body-container">
+    <div class="top-banner">
+        <div class="logo-container">
+            <img src="{% static 'images/rs.png' %}" class="img-rounded logo-img">
+        </div>
+    </div>
+    <div class="left-nav">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Home</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="middle-content">
+            {% if alpha_list  %}
+            {% for alpha in alpha_list %}
+                <div><h2 class="title-style">{{ alpha.title }}</h2><pre class="text-area">{{ alpha.alpha_text }}</pre></div>
+            {% endfor %}
+            {% else %}
+                <p>Alpha is loose.</p>
+            {% endif %}
+        </div>
+        <div class="right-content">
+
+        </div>
+        <div class="bottom-content">
+
+        </div>
+    </div>
+</body>
+</html>
+
+{% comment %}
+handy url link
+<a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+{% endcomment %}
